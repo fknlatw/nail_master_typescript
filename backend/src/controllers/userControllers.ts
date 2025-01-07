@@ -5,10 +5,8 @@ import bcrypt from 'bcryptjs';
 import "dotenv/config.js";
 import { User, UserWithoutId, UserWithoutPassword } from "../interfaces/interfaces";
 import { RowDataPacket } from "mysql2";
-import { ApplicableRefactorInfo } from "typescript";
 
-
-const generateRefreshToken = (user: User): string => {
+export const generateRefreshToken = (user: User): string => {
     const {userPassword, ...userWithoutUserPassword} = user;
 
     return jwt.sign(
@@ -18,7 +16,7 @@ const generateRefreshToken = (user: User): string => {
     );
 }
 
-const generateAccessToken = (user: User): string => {
+export const generateAccessToken = (user: User): string => {
     const {userPassword, ...userWithoutUserPassword} = user;
 
     return jwt.sign(
@@ -68,7 +66,7 @@ export const loginUser = async (req: Request, res: Response) => {
                         httpOnly: true,
                         secure: true,
                         maxAge: 15 * 60 * 1000
-                    })
+                    });
                     res.status(200).json({message: "Выполнен вход"});
                 }
             );
