@@ -1,0 +1,44 @@
+.container{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 100vh;
+  padding-bottom: 0.5rem;
+}
+
+
+
+@media (min-height: 720px){
+  .container{
+    height: 720px;
+  }
+}
+
+.left-wrapper{
+  padding: 0.5rem;
+}
+
+
+
+.right-wrapper{
+  /* padding: 0.5rem; */
+  overflow: auto;
+  scrollbar-width: none;
+}
+.right-wrapper::-webkit-scrollbar{
+  display: none;
+}
+
+thead{
+  background: #c77dff;
+  color: #efdef8;
+}
+
+tbody{
+  background: #efdef8;
+}
+td{
+  padding: 0.2rem;
+  border: 1px solid rgb(113, 84, 113);
+}

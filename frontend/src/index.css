@@ -1,0 +1,36 @@
+@font-face{
+  font-family: "PlexSans";
+  src: url("./fonts/IBMPlexSans-ExtraLight.ttf") format("truetype");
+}
+
+button{
+  border: none;
+  cursor: pointer;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "PlexSans", sans-serif;
+}
+
+body{
+  min-height: 100vh;
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+  position: relative;
+}
+.app{
+  min-height: 100vh;
+}
+
+a{
+  text-decoration: none;
+}
+
+input{
+  padding: 0.2rem;
+  outline: none;
+}
