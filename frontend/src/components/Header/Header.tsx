@@ -1,4 +1,6 @@
 import "./Header.scss";
+import Logo from "/images/logo.png";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -6,19 +8,40 @@ const Header = () => {
       <div className="header__container">
         <img 
           className="header__image" 
-          src="./images/869d96f64fac176bfd26aef2d3fcc429.png" 
+          src={Logo} 
           alt="logo" 
         />
 
         <ul className="header__list">
           <li className="list__item">
-            <a className="list__link" href="">Войти</a>
+
+            <NavLink 
+              to="/login" 
+              className={({ isActive }) => isActive 
+              ? "list__link--active list__link" : "list__link"} 
+            >
+              Войти
+            </NavLink>
           </li>
+          
           <li className="list__item">
-            <a className="list__link" href="">Регистрация</a>
+            <NavLink 
+              className={({ isActive }) => isActive 
+              ? "list__link--active list__link" : " list__link"} 
+              to="/register"
+            >
+              Регистрация
+            </NavLink>
           </li>
+
           <li className="list__item">
-            <a className="list__link" href="">Приложение</a>
+            <NavLink  
+              to="/" 
+              className={({ isActive }) => isActive 
+              ? "list__link--active list__link" : " list__link"} 
+            >
+              Приложение
+            </NavLink>
           </li>
         </ul>
       </div>

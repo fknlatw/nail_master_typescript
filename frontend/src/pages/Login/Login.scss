@@ -1,0 +1,14 @@
+.login_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    .login_form{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+    }
+
+}
