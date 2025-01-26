@@ -6,6 +6,9 @@
 button{
   border: none;
   cursor: pointer;
+  background: #b350fe;
+  padding: 0.25rem;
+  color: #efdef8;
 }
 *{
   padding: 0;
@@ -16,14 +19,23 @@ button{
 
 body{
   min-height: 100vh;
+  line-height: 1;
 }
 table{
   border-collapse: collapse;
   width: 100%;
   position: relative;
 }
+
 .app{
   min-height: 100vh;
+  font-size: 1rem;
+}
+.container{
+  margin: 0 auto;
+  height: calc(100vh - 3.75rem);
+  max-width: 1200px;
+  overflow: hidden;
 }
 
 a{
@@ -33,4 +45,31 @@ a{
 input{
   padding: 0.2rem;
   outline: none;
+  border: 1px solid #b350fe;
+  color: #a736fe;
+}
+
+@media (min-height: 720px){
+  .container{
+    height: 720px;
+  } 
+}
+
+@media (max-width: 660px){
+  .container{
+    min-height: calc(100vh - 3.75rem);
+    height: auto;
+  }
+  .app{
+    font-size: 0.8rem;
+  }
+  button{
+    font-size: 0.8rem;
+  }
+  tbody{
+    word-break: break-all;
+  }
+  td{
+    font-size: 0.7rem;
+  }
 }

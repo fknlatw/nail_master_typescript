@@ -1,5 +1,9 @@
 import { useState } from "react";
+import { isObjectEmpty } from "../../utils/isObjectEmpty";
 import "./InputForm.scss";
+import {displayError} from "../../utils/displayError";
+
+
 
 const InputForm = () => {
     const [formData, setFormData] = useState({
@@ -9,33 +13,25 @@ const InputForm = () => {
         entriePhone: ""
     });
     
+    const [error, setError] = useState("");
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target as HTMLInputElement;
         setFormData(prevState => ({...prevState, [name]: value}));
         
     }
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-       const isObjectEmpty = (obj: any): boolean => {
-        for(let key in obj){
-            if(obj[key] === ""){
-                console.log(obj[key]);
-                return true;
-            }  
-        }
-            return false;
-       }
+        const isEmpty = isObjectEmpty(formData);
 
-       isObjectEmpty(formData);
-
-
-       console.log(isObjectEmpty(formData));
+        if(isEmpty) displayError("Заполните все поля", setError);
+       
        
     }
 
     return (
         <form className="form" onSubmit={handleSubmit}>
+            <h2>Добавить запись</h2>
             <label 
                 className="form__label" 
                 htmlFor="entrieDatetime"
@@ -92,6 +88,8 @@ const InputForm = () => {
                 className="form__button" 
                 type="submit"
             >Добавить запись</button>
+
+            {error && <p>{error}</p>}
         </form>
     );
 }

@@ -1,0 +1,45 @@
+
+.home_container{
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  padding-bottom: 0.5rem;
+
+  .left-wrapper{
+    padding: 0.5rem;
+    overflow: auto;
+    scrollbar-width: none; /* Для Firefox */
+    -ms-overflow-style: none; /* Для Internet Explorer и Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Для Chrome, Safari и Opera */
+    }
+  }
+
+  .right-wrapper{
+    overflow: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
+  }
+
+  
+
+    
+  @media (max-width: 660px){
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: 0;
+
+    .right-wrapper{
+      padding: 0 0.5rem 0.5rem 0.5rem;
+    }
+  }
+
+
+}
+
+
+
+
+

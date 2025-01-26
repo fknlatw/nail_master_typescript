@@ -1,57 +1,31 @@
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 import Header from "./components/Header/Header";
-import './App.css';
-import InputForm from "./components/InputForm/InputForm";
 
-function App() {
+const App = () => {
   return (
     <div className="app">
       <Header />
-      <div className="container">
-        <div className="left-wrapper">
-          <InputForm />
-        </div>
+      <Routes>
+        <Route 
+          element={<Home />} 
+          path="/" 
+        />
 
-        <div className="right-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <td>Дата и время</td>
-                <td>Тип</td>
-                <td>Имя Кл.</td>
-                <td>Телефон Кл.</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>18-12-2025-13:00:00</td>
-                <td>Маникюр</td>
-                <td>Алиса</td>
-                <td>8(908)792-92-31</td>
-              </tr>
-              <tr>
-                <td>18-12-2025-13:00:00</td>
-                <td>Маникюр</td>
-                <td>Алиса</td>
-                <td>8(908)792-92-31</td>
-              </tr>
-              <tr>
-                <td>18-12-2025-13:00:00</td>
-                <td>Маникюр</td>
-                <td>Алиса</td>
-                <td>8(908)792-92-31</td>
-              </tr>
-              <tr>
-                <td>18-12-2025-13:00:00</td>
-                <td>Маникюр</td>
-                <td>Алиса</td>
-                <td>8(908)792-92-31</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <Route 
+          element={<Login />} 
+          path="/login" 
+        />
+
+        <Route 
+          element={<Register />} 
+          path="/register" 
+        />
+      </Routes>
     </div>
   )
 }
 
-export default App
+export default App;

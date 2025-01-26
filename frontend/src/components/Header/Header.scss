@@ -8,9 +8,14 @@
         justify-content: space-between;
         align-items: center;
         padding: 0.25rem 0.5rem;
+        height: 3.75rem;
 
         .header__image{
-            height: 3.5rem;
+            height: 3rem;
+
+            @media (max-width: 660px){
+                height: 2.5rem;
+            }
         }
 
         .header__list{
@@ -18,11 +23,19 @@
             list-style: none;
             gap: 1rem;
 
+            
             .list__item{
                 .list__link{
                     color: #fff;
+
+                    &.list__link--active{  
+                        color: #bc9ed4;
+                    }
                 }
+
+                
             }
         }
+
     }
 }
