@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { isObjectEmpty } from "../../utils/isObjectEmpty";
 import "./InputForm.scss";
 import {displayError} from "../../utils/displayError";
+import { EntriesContext, EntriesContextType } from "../../context/EntriesContext";
 
 
 
 const InputForm = () => {
+    const { addEntrie } = useContext(EntriesContext) as EntriesContextType;
     const [formData, setFormData] = useState({
         entrieDatetime: "",
         entrieType: "",
@@ -14,11 +16,12 @@ const InputForm = () => {
     });
     
     const [error, setError] = useState("");
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target as HTMLInputElement;
         setFormData(prevState => ({...prevState, [name]: value}));
-        
     }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -26,7 +29,7 @@ const InputForm = () => {
 
         if(isEmpty) displayError("Заполните все поля", setError);
        
-       
+       addEntrie(formData);
     }
 
     return (

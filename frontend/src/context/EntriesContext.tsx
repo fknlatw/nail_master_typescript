@@ -1,14 +1,18 @@
 import { createContext, FC, PropsWithChildren } from 'react';
 
 export type EntriesContextType = {
-    message: string
+    addEntrie: (formData: any) => void
 }
 export const EntriesContext = createContext<EntriesContextType | null>(null);
 
 const EntriesProvider: FC<PropsWithChildren> = ({children}) => {
-    const message = "hello";
+    const addEntrie = (formData:any) => {
+        console.log(formData);
+    };
     return (
-        <EntriesContext.Provider value={{message}}>
+        <EntriesContext.Provider value={{
+            addEntrie
+        }}>
             {children}
         </EntriesContext.Provider>
     )
