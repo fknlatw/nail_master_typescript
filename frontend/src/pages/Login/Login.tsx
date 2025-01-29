@@ -1,23 +1,39 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext, AuthContextType } from "../../context/AuthContext";
 import "./Login.scss";
 
 const Login = () => {
+  const {LoginUser} = useContext(AuthContext) as AuthContextType;
+  const [userData, setUserData] = useState({
+    userName: "",
+    userPassword: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target as HTMLInputElement;
+    setUserData(prevState => ({...prevState, [name]: value}));
+}
+
   return (
     <div className="container login_container">
 
-      <form className="login_form">
+      <form onSubmit={(e)=> LoginUser(e, userData)}className="login_form">
         <h2>Вход в систему</h2>
         <label htmlFor="userName">Имя пользователя</label>
 
         <input 
-          id="userName" 
           type="text" 
+          name="userName"
+          value={userData.userName}
+          onChange={handleChange}
         />
         <label htmlFor="userPassword">Пароль</label>
 
         <input 
           type="text" 
-          id="userPassword" 
+          name="userPassword" 
+          value={userData.userPassword}
+          onChange={handleChange}
         />
 
         <button type="submit">Войти</button>
