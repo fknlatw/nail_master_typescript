@@ -4,8 +4,6 @@ import "./InputForm.scss";
 import {displayError} from "../../utils/displayError";
 import { EntriesContext, EntriesContextType } from "../../context/EntriesContext";
 
-
-
 const InputForm = () => {
     const { addEntrie } = useContext(EntriesContext) as EntriesContextType;
     const [formData, setFormData] = useState({
@@ -27,9 +25,19 @@ const InputForm = () => {
 
         const isEmpty = isObjectEmpty(formData);
 
-        if(isEmpty) displayError("Заполните все поля", setError);
+        if(isEmpty) {
+            displayError("Заполните все поля", setError);
+            return
+        };
        
-       addEntrie(formData);
+        addEntrie(formData);
+
+        setFormData({
+            entrieDatetime: "",
+            entrieType: "",
+            entrieClientName: "",
+            entriePhone: ""
+        });
     }
 
     return (

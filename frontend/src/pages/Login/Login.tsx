@@ -12,7 +12,7 @@ const Login = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target as HTMLInputElement;
     setUserData(prevState => ({...prevState, [name]: value}));
-}
+  }
 
   return (
     <div className="container login_container">
