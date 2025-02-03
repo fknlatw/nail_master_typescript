@@ -1,8 +1,11 @@
 import "./Header.scss";
 import Logo from "/images/logo.png";
 import { NavLink } from "react-router-dom";
+import {useContext} from "react";
+import { AuthContext, AuthContextType } from "../../context/AuthContext";
 
 const Header = () => {
+  const {auth, LogoutUser} = useContext(AuthContext) as AuthContextType;
   return (
     <header className="header">
       <div className="header__container">
@@ -13,8 +16,7 @@ const Header = () => {
         />
 
         <ul className="header__list">
-          <li className="list__item">
-
+          {!auth && <li className="list__item">
             <NavLink 
               to="/login" 
               className={({ isActive }) => isActive 
@@ -22,7 +24,10 @@ const Header = () => {
             >
               Войти
             </NavLink>
-          </li>
+          </li>}
+          {auth && <li className="list__item">
+            <a onClick={()=>LogoutUser()} className="list__link">Выйти</a>
+          </li>}
           
           <li className="list__item">
             <NavLink 

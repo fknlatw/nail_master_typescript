@@ -49,12 +49,12 @@ export const loginUser = async (req: Request, res: Response) => {
             const accessToken = generateAccessToken(user);
             const refreshToken = generateRefreshToken(user);
 
-            pool.query(
-                "INSERT INTO tokens (token, userId) VALUES (?, ?)", 
-                [refreshToken, user.userId], 
-                (err) => {
-                    if(err) return res.status(500)
-                    .json({message: "Ошибка на сервере"});
+            // pool.query(
+            //     "INSERT INTO tokens (token, userId) VALUES (?, ?)", 
+            //     [refreshToken, user.userId], 
+            //     (err) => {
+            //         if(err) return res.status(500)
+            //         .json({message: "Ошибка на сервере"});
 
                     res.cookie("refreshToken", refreshToken, {
                         httpOnly: true, 
@@ -68,8 +68,8 @@ export const loginUser = async (req: Request, res: Response) => {
                         maxAge: 15 * 60 * 1000
                     });
                     res.status(200).json({message: "Выполнен вход"});
-                }
-            );
+                // }
+            // );
         }
     );
 }
@@ -89,16 +89,16 @@ export const registerUser = async (req: Request, res: Response) => {
             if(results.length > 0) return res.status(400)
             .json({message: "Пользователь с таким именем уже существует"});
 
-            pool.query(
-                "INSERT INTO users (userName, userPassword) VALUES (?, ?)",
-                [userName, hashedUserPassword],
-                (err) => {
-                    if(err) return res.status(500)
-                    .json({message: "Ошибка на сервере"});
+            // pool.query(
+            //     "INSERT INTO users (userName, userPassword) VALUES (?, ?)",
+            //     [userName, hashedUserPassword],
+            //     (err) => {
+            //         if(err) return res.status(500)
+            //         .json({message: "Ошибка на сервере"});
                     
                     res.status(200).json({message: "Пользователь успешно зарегистрирован"});
-                }
-            );
+            //     }
+            // );
         }    
     );
 }
